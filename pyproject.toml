@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "local-annotation-qa"
+version = "0.1.0"
+description = "Reproducible local vision-model benchmark and review workflow for COCO boxes"
+requires-python = ">=3.10"
+dependencies = [
+  "pydantic>=2.7,<3",
+  "Pillow>=10.0",
+  "numpy>=1.26",
+  "ijson>=3.2",
+  "pycocotools>=2.0.7",
+]
+
+[project.optional-dependencies]
+review = ["streamlit>=1.38"]
+dev = ["ruff>=0.6"]
+
+[project.scripts]
+annotation-qa = "annotation_qa.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
